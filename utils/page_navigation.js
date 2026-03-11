@@ -1,86 +1,91 @@
-//Hard Wait
-export async function goToSleep(pageElement, secs){
+/**
+ * page_navigation.js -- Reusable helpers for interacting with page elements.
+ *
+ * IMPORTANT PLAYWRIGHT CONCEPT -- Auto-waiting:
+ *   Most Playwright actions (click, fill, etc.) automatically wait for the
+ *   element to be visible and actionable. You rarely need explicit sleeps.
+ *   Use `expect(locator).toBeVisible({ timeout })` when you need to assert
+ *   visibility, and `locator.waitFor()` when you need to wait before acting.
+ *
+ *   Avoid `page.waitForTimeout()` (hard sleeps) -- they slow down tests and
+ *   make them flaky. The helpers below have been updated to remove them.
+ *
+ * Usage:
+ *   import { clickLink, elementByRole } from '../utils/page_navigation.js';
+ */
 
-    await pageElement.waitForTimeout(secs);
-
-} 
-
-//check if element is visible wit 25 second wait
-export async function elementNameIsVisible(myPage, myName){
-//In this function we wait up to 25 seconds prior to returning false
-//we check every 1 second to verify if the expected page is visible
-//once visible, we return True    
-    let i = 0;
-    await myPage.waitForTimeout(1000);
-    do {
-//        if (page.locator("\'#"+ myName + "\'").isVisible()) 
-            console.log('you are in the elementIsVisible function');
-        if (myPage.locator('#'+ myName).isVisible()) 
-        {
-            console.log(myName + ' element is visible');
-            i = 25;
-            return true;
-        } else {
-            await myPage.waitForTimeout(1000);
-        }
-    
-    } while(i<25);
-    return false
-
+/**
+ * Click a sidebar or navigation link by its accessible name, then wait for
+ * the network to settle (no pending requests for 500 ms).
+ *
+ * @param {import('@playwright/test').Page} page
+ * @param {string} linkName - The visible / accessible name of the link.
+ */
+export async function clickLink(page, linkName) {
+  await page.getByRole('link', { name: linkName }).click();
+  await page.waitForLoadState('networkidle');
 }
 
-//click on the page element by ID Text
-export async function clickTextElement(pageElement, elementText){
-    console.log('id= ' + '#'+ elementText);
-    await pageElement.locator('#'+ elementText).click();
-
+/**
+ * Click an element by its ARIA role and accessible name, then wait for
+ * network activity to settle.
+ *
+ * @param {import('@playwright/test').Page} page
+ * @param {string} role - ARIA role (e.g. 'link', 'button', 'heading').
+ * @param {string} name - Accessible name of the element.
+ */
+export async function elementByRole(page, role, name) {
+  await page.getByRole(role, { name }).click();
+  await page.waitForLoadState('networkidle');
 }
 
-//Click element By Id Name
-export async function clickElement(pageElement, elementName){
-    console.log('id= ' + '#'+ elementName);
-    await pageElement.locator('#'+ elementName).click();
-    console.log('id= ' + '***'+ elementName);
-    await pageElement.waitForTimeout(1000);
+/**
+ * Click an element located by its CSS id.
+ *
+ * @param {import('@playwright/test').Page} page
+ * @param {string} id - The element's id attribute (without '#').
+ */
+export async function clickElement(page, id) {
+  await page.locator(`#${id}`).click();
 }
 
-//Click on element By Role with name
-export async function elementByRole(pageElement, roleType, roleName){
-   // console.log('id= ' + '#'+ elementName);
-    await pageElement.getByRole(roleType, {name: roleName}).click();
-    //console.log('name: ' + roleName);
-    await pageElement.waitForTimeout(2000);
-    console.log('return: ' + pageElement.url());
+/**
+ * Click an element whose text content matches `text` (located by id selector).
+ *
+ * @param {import('@playwright/test').Page} page
+ * @param {string} text - Text used to build the `#text` selector.
+ */
+export async function clickTextElement(page, text) {
+  await page.locator(`#${text}`).click();
 }
 
-//Click on LINK element
-export async function clickLink(pageElement, roleName){
-    await pageElement.getByRole('link', { name: roleName }).click();
-    //console.log('name: ' + roleName);
-    await pageElement.waitForTimeout(2000);
-    //await pageElement.reload();
-    console.log('return: ' + pageElement.url());
+/**
+ * Return the last segment of the current page URL.
+ *
+ * Example: if the URL is "https://app.com/brands/solo/settings",
+ *          this returns "settings".
+ *
+ * @param {import('@playwright/test').Page} page
+ * @returns {Promise<string>}
+ */
+export async function urlLastLeaf(page) {
+  const url = page.url();
+  return url.slice(url.lastIndexOf('/') + 1);
 }
 
-//find last leaf of URL Tree
- export async function urlLastLeaf(pageElement){
- const pageURL = await pageElement.url();
- console.log(pageURL);
- await pageElement.waitForTimeout(1000);
- return pageURL.slice(pageURL.lastIndexOf("/") + 1);
- }
-
- //array of text from DIV tag parent with DIV children
- export async function arrayDivFromDiv(pageRef){
-    const childDivsLocator = pageRef.locator('div');
-    const itemCount = await childDivsLocator.count();
-    // define Array
-    const outArray = [];
-    //populate Array
-    for (let i = 0; i < itemCount; i++) {
-        const text = await childDivsLocator.nth(i).textContent();
-        outArray.push(text)   ;
-        console.log(outArray[i]);
-    }    
-    return outArray
- }
+/**
+ * Collect the text content of all direct `<div>` children of a parent locator
+ * and return them as an array.
+ *
+ * @param {import('@playwright/test').Locator} parentLocator
+ * @returns {Promise<string[]>}
+ */
+export async function arrayDivFromDiv(parentLocator) {
+  const children = parentLocator.locator('div');
+  const count = await children.count();
+  const results = [];
+  for (let i = 0; i < count; i++) {
+    results.push(await children.nth(i).textContent());
+  }
+  return results;
+}

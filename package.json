@@ -1,14 +1,22 @@
 {
-  "name": "overwatch",
+  "name": "luminize-automation",
   "version": "1.0.0",
-  "description": "",
-  "main": "InitialTest.spec.js",
-  "scripts": {},
-  "keywords": [],
+  "description": "Playwright end-to-end test suite for Luminize Overwatch",
+  "type": "module",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "npx playwright test --debug",
+    "report": "npx playwright show-report"
+  },
+  "keywords": ["playwright", "e2e", "automation", "testing"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.3.2"
+    "@types/node": "^25.3.2",
+    "dotenv": "^16.4.7"
   }
 }
