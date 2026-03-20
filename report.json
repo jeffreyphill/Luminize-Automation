@@ -1,0 +1,334 @@
+{
+  "config": {
+    "configFile": "C:\\Automation Projects\\Luminize\\Overwatch\\playwright.config.js",
+    "rootDir": "C:/Automation Projects/Luminize/Overwatch/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Automation Projects/Luminize/Overwatch/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome-native",
+        "name": "chrome-native",
+        "testDir": "C:/Automation Projects/Luminize/Overwatch/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "report.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "results.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "runAgents": "none",
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "3way",
+    "version": "1.58.2",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "example.spec.js",
+      "file": "example.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "has title",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-native",
+              "projectName": "chrome-native",
+              "results": [
+                {
+                  "workerIndex": 27,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 613,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-20T02:55:09.998Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd9b2edffe9b7501040c-b443eac69b2077eebedf",
+          "file": "example.spec.js",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "get started link",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-native",
+              "projectName": "chrome-native",
+              "results": [
+                {
+                  "workerIndex": 27,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 414,
+                  "error": {
+                    "message": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: 'Get started' })\u001b[22m\n",
+                    "stack": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: 'Get started' })\u001b[22m\n\n    at C:\\Automation Projects\\Luminize\\Overwatch\\tests\\example.spec.js:15:57",
+                    "location": {
+                      "file": "C:\\Automation Projects\\Luminize\\Overwatch\\tests\\example.spec.js",
+                      "column": 57,
+                      "line": 15
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 13 |\u001b[39m\n \u001b[90m 14 |\u001b[39m   \u001b[90m// Click the get started link.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Get started'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m\n \u001b[90m 17 |\u001b[39m   \u001b[90m// Expects page to have a heading with the name of Installation.\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Installation'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Automation Projects\\Luminize\\Overwatch\\tests\\example.spec.js",
+                        "column": 57,
+                        "line": 15
+                      },
+                      "message": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: 'Get started' })\u001b[22m\n\n\n\u001b[0m \u001b[90m 13 |\u001b[39m\n \u001b[90m 14 |\u001b[39m   \u001b[90m// Click the get started link.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Get started'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m\n \u001b[90m 17 |\u001b[39m   \u001b[90m// Expects page to have a heading with the name of Installation.\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Installation'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Automation Projects\\Luminize\\Overwatch\\tests\\example.spec.js:15:57\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-20T02:55:10.680Z",
+                  "annotations": [],
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "C:\\Automation Projects\\Luminize\\Overwatch\\tests\\example.spec.js",
+                    "column": 57,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "dd9b2edffe9b7501040c-0e0b8563ee97575038a0",
+          "file": "example.spec.js",
+          "line": 11,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "Login.test.spec.js",
+      "file": "Login.test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Navigate to Overwatch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-native",
+              "projectName": "chrome-native",
+              "results": [
+                {
+                  "workerIndex": 28,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1930,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-20T02:55:12.677Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "da2887a48e2d6c67e0a2-a8d47465d9f5d98b8ca0",
+          "file": "Login.test.spec.js",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "Bad Credentials",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-native",
+              "projectName": "chrome-native",
+              "results": [
+                {
+                  "workerIndex": 28,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6403,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-20T02:55:14.714Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "da2887a48e2d6c67e0a2-d2e8301857c326dec8ec",
+          "file": "Login.test.spec.js",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "Home Page",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chrome-native",
+              "projectName": "chrome-native",
+              "results": [
+                {
+                  "workerIndex": 28,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1555,
+                  "error": {
+                    "message": "ReferenceError: expect is not defined",
+                    "stack": "ReferenceError: expect is not defined\n    at Object.loggedInPage (C:\\Automation Projects\\Luminize\\Overwatch\\fixtures\\fixtures.js:19:5)",
+                    "location": {
+                      "file": "C:\\Automation Projects\\Luminize\\Overwatch\\fixtures\\fixtures.js",
+                      "column": 5,
+                      "line": 19
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\fixtures.js:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[90m//Assert that Watchtower is available (or find another key)\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'ASIN Watchtower'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     console\u001b[33m.\u001b[39mlog(\u001b[32m'Fixture login complete'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m use(page)\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m     \u001b[90m// Teardown logic, if any\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Automation Projects\\Luminize\\Overwatch\\fixtures\\fixtures.js",
+                        "column": 5,
+                        "line": 19
+                      },
+                      "message": "ReferenceError: expect is not defined\n\n\u001b[90m   at \u001b[39m..\\fixtures\\fixtures.js:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[90m//Assert that Watchtower is available (or find another key)\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'ASIN Watchtower'\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible({timeout\u001b[33m:\u001b[39m \u001b[35m15000\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     console\u001b[33m.\u001b[39mlog(\u001b[32m'Fixture login complete'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m use(page)\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m     \u001b[90m// Teardown logic, if any\u001b[39m\u001b[0m\n\u001b[2m    at Object.loggedInPage (C:\\Automation Projects\\Luminize\\Overwatch\\fixtures\\fixtures.js:19:5)\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "AuthURL: https://auth.overwatch.luminize.com/u/login?state=hKFo2SBzQVVjVjMzdUlUMTltRnVST0Uwckx2Rk43cDRjeG12X6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIEV4a1FNRUc5SkxOWE5OdnF4OEdmcHRDN0JUanBYWVFlo2NpZNkgbEVwSDVMdGZNMGl3WVFMZ1c0REhNeURTNml0cE92Y04\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-03-20T02:55:21.152Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Automation Projects\\Luminize\\Overwatch\\test-results\\Login.test-Home-Page-chrome-native\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Automation Projects\\Luminize\\Overwatch\\test-results\\Login.test-Home-Page-chrome-native\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Automation Projects\\Luminize\\Overwatch\\fixtures\\fixtures.js",
+                    "column": 5,
+                    "line": 19
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "da2887a48e2d6c67e0a2-36da0e1f45ce051da4e3",
+          "file": "Login.test.spec.js",
+          "line": 73,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-03-20T02:55:06.736Z",
+    "duration": 16039.768000006676,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

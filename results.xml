@@ -1,0 +1,65 @@
+<testsuites id="" name="" tests="5" failures="2" skipped="0" errors="0" time="16.039768000006674">
+<testsuite name="example.spec.js" timestamp="2026-03-20T02:55:08.508Z" hostname="chrome-native" tests="2" failures="1" skipped="0" time="1.027" errors="0">
+<testcase name="has title" classname="example.spec.js" time="0.613">
+</testcase>
+<testcase name="get started link" classname="example.spec.js" time="0.414">
+<failure message="example.spec.js:11:5 get started link" type="FAILURE">
+<![CDATA[  [chrome-native] › example.spec.js:11:5 › get started link ────────────────────────────────────────
+
+    Error: locator.click: Target page, context or browser has been closed
+    Call log:
+      - waiting for getByRole('link', { name: 'Get started' })
+
+
+      13 |
+      14 |   // Click the get started link.
+    > 15 |   await page.getByRole('link', { name: 'Get started' }).click();
+         |                                                         ^
+      16 |
+      17 |   // Expects page to have a heading with the name of Installation.
+      18 |   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+        at C:\Automation Projects\Luminize\Overwatch\tests\example.spec.js:15:57
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="Login.test.spec.js" timestamp="2026-03-20T02:55:08.508Z" hostname="chrome-native" tests="3" failures="1" skipped="0" time="9.888" errors="0">
+<testcase name="Navigate to Overwatch" classname="Login.test.spec.js" time="1.93">
+</testcase>
+<testcase name="Bad Credentials" classname="Login.test.spec.js" time="6.403">
+</testcase>
+<testcase name="Home Page" classname="Login.test.spec.js" time="1.555">
+<failure message="Login.test.spec.js:73:1 Home Page" type="FAILURE">
+<![CDATA[  [chrome-native] › Login.test.spec.js:73:1 › Home Page ────────────────────────────────────────────
+
+    ReferenceError: expect is not defined
+
+       at ..\fixtures\fixtures.js:19
+
+      17 |
+      18 |     //Assert that Watchtower is available (or find another key)
+    > 19 |     await expect(page.getByRole('link', { name: 'ASIN Watchtower' })).toBeVisible({timeout: 15000});
+         |     ^
+      20 |     console.log('Fixture login complete');
+      21 |     await use(page);
+      22 |     // Teardown logic, if any
+        at Object.loggedInPage (C:\Automation Projects\Luminize\Overwatch\fixtures\fixtures.js:19:5)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\Login.test-Home-Page-chrome-native\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\Login.test-Home-Page-chrome-native\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[AuthURL: https://auth.overwatch.luminize.com/u/login?state=hKFo2SBzQVVjVjMzdUlUMTltRnVST0Uwckx2Rk43cDRjeG12X6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIEV4a1FNRUc5SkxOWE5OdnF4OEdmcHRDN0JUanBYWVFlo2NpZNkgbEVwSDVMdGZNMGl3WVFMZ1c0REhNeURTNml0cE92Y04
+
+[[ATTACHMENT|test-results\Login.test-Home-Page-chrome-native\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\Login.test-Home-Page-chrome-native\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
